@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Case study om grønn kode og bærekraftige programmeringspraksiser." />
+  <title>Case</title>
+
+  <link rel="stylesheet" href="css/case.css" />
+  <link rel="stylesheet" href="css/header.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/chatbot.css" />
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
+
+  <script src="/script/header.js" defer></script>
+  <script src="/script/footer.js" defer></script>
+  <script src="/script/chatbot.js" defer></script>
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "qzyy0mjou3");
+</script>  
+
+</head>
+
+<body data-page="case.html">
+
+  <div class="intro">
+  <h1>Case Study</h1>
+  <p style="max-width:60%; margin: 0 auto;  ">
+    On this page, you can explore selected case studies that examine the relationship between artificial intelligence, energy consumption, and sustainability. Each study presents concrete findings and methods for reducing the environmental impact of code and model usage, offering insights into how green technology is being developed in practice.
+  </p>
+  </div>
+    <main class="pdf-container">
+    <div class="pdf-grid">
+      <!-- Boks 1 -->
+      <section class="pdf-info-boks">
+        <h2 class="pdf-tittel">Green Coding</h2>
+        
+        <p class="pdf-beskrivelse">
+          The Green Prompting study from Lancaster University explores how the way we ask AI questions affects its energy use. Researchers tested three open AI models – Mistral 7B, Gemma 7B, and Vicuna 7B – across tasks like question answering and text generation. After running over 891,000 tests, they found that what you ask matters more than how long your prompt is. Prompts like “explain” or “analyze” often lead to longer, more complex answers that use significantly more energy.
+          <br><br>
+          The study also showed that similar AI models can vary in energy use based on response length and how they generate answers. For instance, Gemma gave the longest replies and used the most energy overall, while Vicuna’s use of emojis also added to energy costs. The takeaway? Writing smarter prompts could help make AI more eco-friendly by lowering its environmental impact.
+        </p>
+        <div class="image-crop">
+          <img src="/images/stock1.jpg" style="width: 360px; height: auto;">
+        </div>
+        <button class="pdf-knapp" onclick="visPdf('https://arxiv.org/pdf/2503.10666')">Read PDF</button>
+      </section>
+
+      <!-- Boks 2 -->
+      <section class="pdf-info-boks">
+        <h2 class="pdf-tittel">Energy-Efficient Algorithms</h2>
+        <p class="pdf-beskrivelse">
+          The study “Learn to Code Sustainably” looks at whether AI tools like GitHub Copilot, ChatGPT, and CodeWhisperer can write code that’s not just functional, but also energy-efficient. The researchers introduce a new concept called Green Capacity (GC), which measures how “green” code is based on four factors: runtime, memory use, energy consumption, and FLOPs (computational effort). The AI-generated code was tested against top-rated human code from LeetCode.
+          <br><br>
+          Findings show that while AI tools can produce correct and partially optimized code, they’re often less efficient than expert-written solutions. ChatGPT and Copilot scored better in some cases but still lack a clear understanding of energy-saving practices. The study concludes that AI coding tools need to be trained with explicit sustainability goals in mind to truly reduce the carbon footprint of software development – an increasingly important aim as demand for data and computing continues to grow.
+        </p>
+        <div class="image-crop">
+          <img src="/images/stock2.jpg" style="width: 360px; height: auto;">
+        </div>
+        <button class="pdf-knapp" onclick="visPdf('https://arxiv.org/pdf/2403.03344')">Read PDF</button>
+      </section>
+
+      <!-- Boks 3 -->
+      <section class="pdf-info-boks">
+        <h2 class="pdf-tittel">Less is More:<br> Towards Green Code Large Language Models via
+          Unified Structural Pruning</h2>
+        <p class="pdf-beskrivelse">
+          The study introduces Flab-Pruner, a method for shrinking large language models (LLMs) used for code generation—without sacrificing performance. It prunes the model at three levels: vocabulary, layers, and neural network units, using a technique called KL divergence to keep the output quality high. To boost performance after pruning, the team also adds a custom instruction-tuning strategy.
+          <br><br>
+          Tested on models like CodeQwen, NxCode, and CodeSlerp, Flab-Pruner retains up to 97% of the original performance while cutting 22% of the model size. It also reduces storage, GPU use, computing cost, and CO₂ emissions. The method holds up well under stress and performs even better with light post-training (e.g. LoRA). It’s a promising step toward greener software development with AI.
+        </p>
+        <div class="image-crop">
+          <img src="/images/stock3.jpg" style="width: 360px; height: auto;">
+        </div>
+        <button class="pdf-knapp" onclick="visPdf('https://arxiv.org/pdf/2412.15921')">Read PDF</button>
+      </section>
+    </div>
+  </main>
+
+  <!-- 📦 Fullskjerms PDF-overlay -->
+  <div id="pdf-overlay" class="pdf-overlay">
+    <div class="pdf-overlay-content">
+      <button class="close-btn" onclick="lukkPdf()">Close</button>
+      <iframe id="pdf-frame" src="" title="Fullskjerm PDF"></iframe>
+    </div>
+  </div>
+
+  <div id="chatbot-placeholder"></div>
+
+  <!-- 📜 JavaScript for fullskjerms PDF -->
+  <script>
+    function visPdf(url) {
+      const overlay = document.getElementById("pdf-overlay");
+      const iframe = document.getElementById("pdf-frame");
+      iframe.src = url;
+      overlay.style.display = "flex";
+    }
+
+    function lukkPdf() {
+      const overlay = document.getElementById("pdf-overlay");
+      const iframe = document.getElementById("pdf-frame");
+      iframe.src = "";
+      overlay.style.display = "none";
+    }
+    // Lukk ved klikk utenfor PDF-vinduet
+    document.getElementById("pdf-overlay").addEventListener("click", function (event) {
+      const content = document.querySelector(".pdf-overlay-content");
+      if (!content.contains(event.target)) {
+        lukkPdf();
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz!</title>
+
+  <link rel="stylesheet" href="css/quiz.css" />
+  <link rel="stylesheet" href="css/header.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/chatbot.css" />
+  <script src="/script/header.js" defer></script>
+  <script src="/script/footer.js" defer></script>
+  <script src="/script/chatbot.js" defer></script>
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon"/>
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "qzyy0mjou3");
+</script>  
+
+</head>
+<body class="quiz-body" id="quiz-page" data-page="quiz.html">
+  <div class="quiz-layout">
+    <nav class="quiz-sidebar">
+      <ul>
+        <li><a href="#gronnkode">Green Code</a></li>
+        <li><a href="#energibruk">Energy Use</a></li>
+        <li><a href="#effektivitet">Efficiency</a></li>
+        <li><a href="#designvalg">Design Choices</a></li>
+      </ul>
+    </nav>
+
+    <main class="quiz-content">
+      <div class="intro">
+        <p>
+          Test your knowledge in sustainable programming and green technology.
+        </p>
+      </div>
+
+      <section class="quiz-article" id="gronnkode">
+        <h2>Green Code</h2>
+        <div id="quiz-container">
+          <div id="score-popup" class="score-popup">+50</div>
+          <p id="quiz-question"></p>
+          <div id="quiz-options"></div>
+          <p id="quiz-feedback"></p>
+          <button id="quiz-nextBtn" style="display:none;" onclick="nextQuestion()">Next</button>
+        </div>
+      </section>
+
+      <section class="quiz-article" id="energibruk">
+        <h2>Energy Use</h2>
+        <div class="quiz-container" id="energibruk-quiz-container">
+          <div class="score-popup">+50</div>
+          <div id="energibruk-quiz-content"></div>
+        </div>
+      </section>
+      
+      <section class="quiz-article" id="effektivitet">
+        <h2>Code Efficiency</h2>
+        <div class="quiz-container" id="effektivitet-quiz-container">
+          <div class="score-popup">+50</div>
+          <div id="effektivitet-quiz-content"></div>
+        </div>
+      </section>
+      
+      <section class="quiz-article" id="designvalg">
+        <h2>Design Choices</h2>
+        <div class="quiz-container" id="designvalg-quiz-container">
+          <div class="score-popup">+50</div>
+          <div id="designvalg-quiz-content"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="chatbot-placeholder"></div>
+
+  <script>
+    /* ---------------------------------- SPØRSMÅL ---------------------------------- */
+      /*GRØNN KODE QUIZ SPØRSMÅL*/
+    const quizData = [
+      {
+        question: "What is green coding primarily about?",
+        options: ["Using lots of colors in design", "Writing code that consumes less power", "Using the latest technology","Coding only for green companies"],
+        correct: "Writing code that consumes less power"
+      },
+      {
+        question: "Which action contributes most to energy-efficient frontend?",
+        options: ["Use of large background images", "High-resolution animations", "Lazy loading of images and content", "Autoplaying videos"],
+        correct: "Lazy loading of images and content"
+      },
+      {
+        question: "What can you do in the backend to reduce environmental impact?",
+        options: ["Increase number of server calls", "Use polling instead of events", "Cache frequently used data", "Use larger databases"],
+        correct: "Cache frequently used data"
+      },
+      {
+        question: "Which technology is known for using renewable energy in their data centers?",
+        options: ["AWS", "Google Cloud", "DigitalOcean", "GitHub"],
+        correct: "Google Cloud"
+      },
+      {
+        question: "Which of these principles is NOT part of green coding?",
+        options: ["Reducing data transfer", "Optimizing algorithms", "Using as much RAM as possible","Minimizing load time"],
+        correct: "Using as much RAM as possible"
+      }
+    ];
+
+    /*SPØRSMÅL TIL ENERGIBRUK*/
+  const energibrukData = [  
+  {
+    question: "What consumes the most energy on a website?",
+    options: ["Large images and videos", "Simple text", "Colorful buttons", "Responsive design"],
+    correct: "Large images and videos"
+  },
+  {
+    question: "What can reduce power consumption in UI?",
+    options: ["Use of dark mode", "More fonts", "GIF animations", "Video in the background"],
+    correct: "Use of dark mode"
+  },
+  {
+    question: "What is energy-saving?",
+    options: ["Compressing images", "Using large JavaScript libraries", "Autoplaying video", "Always light mode"],
+    correct: "Compressing images"
+  },
+  {
+    question: "What causes unnecessary power consumption?",
+    options: ["Heavy animation", "System fonts", "Minified CSS", "SVG icons"],
+    correct: "Heavy animation"
+  },
+  {
+    question: "What reduces transfer and power consumption?",
+    options: ["Lazy loading", "Inline CSS", "Large logos", "Large fonts"],
+    correct: "Lazy loading"
+  }
+];
+          /* SPØRSMÅL TIL EFFEKTIVITET */
+  const effektivitetData = [
+  {
+    question: "What is good practice for efficient looping?",
+    options: ["Always use nested loops", "Prefer while over for", "Avoid unnecessary repetitions", "Always iterate with recursion"],
+    correct: "Avoid unnecessary repetitions"
+  },
+  {
+    question: "What contributes to better performance in data structures?",
+    options: ["Use ArrayList for everything", "Choose structure based on usage", "Always use HashMap", "Avoid data structures"],
+    correct: "Choose structure based on usage"
+  },
+  {
+    question: "How should large data sets be handled?",
+    options: ["Use one big loop", "Store everything in memory", "Batch process", "Repeat queries constantly"],
+    correct: "Batch process"
+  },
+  {
+    question: "What is best for performance?",
+    options: ["Logging everything", "Short functions", "Heavy logging in production", "Avoid refactoring"],
+    correct: "Short functions"
+  },
+  {
+    question: "What is a sign of inefficient code?",
+    options: ["Code with comments", "Repeated logic", "Simple functions", "Reusable code"],
+    correct: "Repeated logic"
+  }
+];
+      /*SPØRSMÅL TIL DESIGNVALG*/
+    const designvalgData = [   
+  {
+    question: "What is important in sustainable design?",
+    options: ["Use of many fonts", "Minimalist layout", "Large images", "Animated backgrounds"],
+    correct: "Minimalist layout"
+  },
+  {
+    question: "What reduces energy use in UI design?",
+    options: ["Video in background", "Dynamically loaded content", "Flash elements", "Uncompressed graphics"],
+    correct: "Dynamically loaded content"
+  },
+  {
+    question: "How do colors affect power consumption?",
+    options: ["Bright colors use less", "Dark mode can save power", "Colors don’t affect it", "Multicolored background is best"],
+    correct: "Dark mode can save power"
+  },
+  {
+    question: "What is best practice for media usage?",
+    options: ["HD videos by default", "Compact images and SVG", "GIFs as background", "Fullscreen animations"],
+    correct: "Compact images and SVG"
+  },
+  {
+    question: "What is a disadvantage of overcomplicated UI?",
+    options: ["It uses less bandwidth", "It’s faster to develop", "It requires more energy", "It’s easier to understand"],
+    correct: "It requires more energy"
+  }
+];
+    
+    /* ---------------------------------- VARIABLER ---------------------------------- */
+    let currentQuestionIndex = 0;
+    let energibrukIndex = 0;
+    let effektivitetIndex = 0;
+    let designvalgIndex = 0;
+    let answered = false;
+    let loggedInUserId = null;
+    
+    /* ---------------------------------- LOGIN ---------------------------------- */
+    async function checkSession() {
+      try {
+        const response = await fetch("/api/users/session", {
+          method: "GET",
+          credentials: "include"
+        });
+        if (!response.ok) throw new Error("Ikke innlogget");
+        const data = await response.json();
+        loggedInUserId = data.userId;
+      } catch (err) {
+        alert("Du må være logget inn for å ta quizen.");
+        window.location.href = "login.html";
+      }
+    }
+    
+    /* ---------------------------------- SCORE ---------------------------------- */
+    async function increaseScore() {
+      try {
+        const response = await fetch("/api/score/update", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          credentials: "include",
+          body: JSON.stringify({
+            userId: loggedInUserId,
+            score: 50,
+            achievements: ["Quiz Bonus"]
+          })
+        });
+        if (!response.ok) {
+          console.error("❌ Kunne ikke oppdatere score");
+        }
+      } catch (err) {
+        console.error("⚠️ Feil under poengoppdatering:", err);
+      }
+    }
+    
+    function showScorePopup(containerId) {
+      const popup = document.querySelector(`#${containerId} .score-popup`);
+      if (popup) {
+        popup.classList.add("show");
+        setTimeout(() => popup.classList.remove("show"), 500);
+      }
+    }
+    
+    /* ----------------------------- GRØNN KODE QUIZ ----------------------------- */
+    async function loadQuestion() {
+      answered = false;
+      const questionData = quizData[currentQuestionIndex];
+      const questionEl = document.getElementById("quiz-question");
+      const optionsEl = document.getElementById("quiz-options");
+      const feedbackEl = document.getElementById("quiz-feedback");
+      const nextBtn = document.getElementById("quiz-nextBtn");
+    
+      feedbackEl.textContent = "";
+      nextBtn.style.display = "none";
+      questionEl.innerHTML = `<span class="question-counter">Question ${currentQuestionIndex + 1} / ${quizData.length}</span><br>${questionData.question}`;
+      optionsEl.innerHTML = "";
+    
+      questionData.options.forEach(option => {
+        const button = document.createElement("button");
+        button.textContent = option;
+        button.classList.add("quiz-option-btn");
+        button.onclick = () => checkAnswer(button, questionData.correct);
+        optionsEl.appendChild(button);
+      });
+    }
+    
+    async function checkAnswer(button, correctAnswer) {
+      if (answered) return;
+      answered = true;
+    
+      const feedback = document.getElementById("quiz-feedback");
+      const nextBtn = document.getElementById("quiz-nextBtn");
+      const buttons = document.querySelectorAll("#quiz-options button");
+      buttons.forEach(btn => btn.disabled = true);
+    
+      if (button.innerText === correctAnswer) {
+        feedback.textContent = "Riktig! 🎉";
+        feedback.style.color = "green";
+        showScorePopup("quiz-container");
+        await increaseScore();
+      } else {
+        feedback.textContent = "Feil! ❌";
+        feedback.style.color = "red";
+      }
+      nextBtn.style.display = "block";
+    }
+    
+    function nextQuestion() {
+      currentQuestionIndex++;
+      if (currentQuestionIndex < quizData.length) {
+        loadQuestion();
+      } else {
+        document.getElementById("quiz-container").innerHTML = "<h2>Congratulations, you have completed the quiz! 🎉</h2>";
+      }
+    }
+    
+    /* ----------------------------- ENERGIBRUK QUIZ ----------------------------- */
+    function loadEnergibrukQuestion() {
+  const container = document.getElementById("energibruk-quiz-content");
+  const q = energibrukData[energibrukIndex];
+
+  container.innerHTML = `
+    <p class="question-counter">Question ${energibrukIndex + 1} / ${energibrukData.length}</p>
+    <h3>${q.question}</h3>
+    <div class="quiz-options">
+      ${q.options.map(option =>
+        `<button class="quiz-option-btn" onclick="checkEnergibrukAnswer(this, '${q.correct.replace(/'/g, "\\'")}')">${option}</button>`
+      ).join("")}
+    </div>
+    <p id="energibruk-feedback" class="quiz-feedback"></p>
+    <button id="energibruk-nextBtn" class="neste-knapp" style="display:none;" onclick="nextEnergibrukQuestion()">Neste</button>
+  `;
+}
+    
+    async function checkEnergibrukAnswer(button, correctAnswer) {
+      const buttons = document.querySelectorAll("#energibruk-quiz-container .quiz-option-btn");
+      const feedback = document.getElementById("energibruk-feedback");
+      const nextBtn = document.getElementById("energibruk-nextBtn");
+      buttons.forEach(btn => btn.disabled = true);
+    
+      if (button.innerText === correctAnswer) {
+        feedback.textContent = "Riktig! 🎉";
+        feedback.style.color = "green";
+        showScorePopup("energibruk-quiz-container");
+        await increaseScore();
+      } else {
+        feedback.textContent = "Feil! ❌";
+        feedback.style.color = "red";
+      }
+      nextBtn.style.display = "inline-block";
+    }
+    
+    function nextEnergibrukQuestion() {
+      energibrukIndex++;
+      if (energibrukIndex < energibrukData.length) {
+        loadEnergibrukQuestion();
+      } else {
+        document.getElementById("energibruk-quiz-container").innerHTML = "<h3>Congratulations, you have completed the quiz! 🎉</h3>";
+      }
+    }
+    
+    /* ----------------------------- EFFEKTIVITET QUIZ ----------------------------- */
+    function loadEffektivitetQuestion() {
+  const container = document.getElementById("effektivitet-quiz-content");
+  const q = effektivitetData[effektivitetIndex];
+
+  container.innerHTML = `
+    <p class="question-counter">Question ${effektivitetIndex + 1} / ${effektivitetData.length}</p>
+    <h3>${q.question}</h3>
+    <div class="quiz-options">
+      ${q.options.map(option =>
+        `<button class="quiz-option-btn" onclick="checkEffektivitetAnswer(this, '${q.correct.replace(/'/g, "\\'")}')">${option}</button>`
+      ).join("")}
+    </div>
+    <p id="effektivitet-feedback" class="quiz-feedback"></p>
+    <button id="effektivitet-nextBtn" class="neste-knapp" style="display:none;" onclick="nextEffektivitetQuestion()">Neste</button>
+  `;
+}
+
+    
+    async function checkEffektivitetAnswer(button, correctAnswer) {
+      const buttons = document.querySelectorAll("#effektivitet-quiz-container .quiz-option-btn");
+      const feedback = document.getElementById("effektivitet-feedback");
+      const nextBtn = document.getElementById("effektivitet-nextBtn");
+      buttons.forEach(btn => btn.disabled = true);
+    
+      if (button.innerText === correctAnswer) {
+        feedback.textContent = "Riktig! 🎉";
+        feedback.style.color = "green";
+        showScorePopup("effektivitet-quiz-container");
+        await increaseScore();
+      } else {
+        feedback.textContent = "Feil! ❌";
+        feedback.style.color = "red";
+      }
+      nextBtn.style.display = "inline-block";
+    }
+    
+    function nextEffektivitetQuestion() {
+      effektivitetIndex++;
+      if (effektivitetIndex < effektivitetData.length) {
+        loadEffektivitetQuestion();
+      } else {
+        document.getElementById("effektivitet-quiz-container").innerHTML = "<h3>Congratulations, you have completed the quiz! 🎉</h3>";
+      }
+    }
+    
+    /* ----------------------------- DESIGNVALG QUIZ ----------------------------- */
+    function loadDesignvalgQuestion() {
+  const container = document.getElementById("designvalg-quiz-content");
+  const q = designvalgData[designvalgIndex];
+
+  container.innerHTML = `
+    <p class="question-counter">Question ${designvalgIndex + 1} / ${designvalgData.length}</p>
+    <h3>${q.question}</h3>
+    <div class="quiz-options">
+      ${q.options.map(option =>
+        `<button class="quiz-option-btn" onclick="checkDesignvalgAnswer(this, '${q.correct.replace(/'/g, "\\'")}')">${option}</button>`
+      ).join("")}
+    </div>
+    <p id="designvalg-feedback" class="quiz-feedback"></p>
+    <button id="designvalg-nextBtn" class="neste-knapp" style="display:none;" onclick="nextDesignvalgQuestion()">Neste</button>
+  `;
+}
+    async function checkDesignvalgAnswer(button, correctAnswer) {
+      const buttons = document.querySelectorAll("#designvalg-quiz-container .quiz-option-btn");
+      const feedback = document.getElementById("designvalg-feedback");
+      const nextBtn = document.getElementById("designvalg-nextBtn");
+      buttons.forEach(btn => btn.disabled = true);
+    
+      if (button.innerText === correctAnswer) {
+        feedback.textContent = "Riktig! 🎉";
+        feedback.style.color = "green";
+        showScorePopup("designvalg-quiz-container");
+        await increaseScore();
+      } else {
+        feedback.textContent = "Feil! ❌";
+        feedback.style.color = "red";
+      }
+      nextBtn.style.display = "inline-block";
+    }
+    
+    function nextDesignvalgQuestion() {
+      designvalgIndex++;
+      if (designvalgIndex < designvalgData.length) {
+        loadDesignvalgQuestion();
+      } else {
+        document.getElementById("designvalg-quiz-container").innerHTML = "<h3>Congratulations, you have completed the quiz! 🎉</h3>";
+      }
+    }
+    
+    /* ----------------------------- INIT ----------------------------- */
+    checkSession().then(loadQuestion);
+    
+    document.addEventListener("DOMContentLoaded", () => {
+      const sidebarLinks = document.querySelectorAll(".quiz-sidebar a");
+    
+      sidebarLinks.forEach(link => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          const targetId = link.getAttribute("href").substring(1);
+          history.replaceState(null, "", `#${targetId}`);
+          document.querySelectorAll(".quiz-article").forEach(section => section.style.display = "none");
+          const targetSection = document.getElementById(targetId);
+          if (targetSection) {
+            targetSection.style.display = "block";
+            if (targetId === "gronnkode") {
+              currentQuestionIndex = 0;
+              loadQuestion();
+            } else if (targetId === "energibruk") {
+              energibrukIndex = 0;
+              loadEnergibrukQuestion();
+            } else if (targetId === "effektivitet") {
+              effektivitetIndex = 0;
+              loadEffektivitetQuestion();
+            } else if (targetId === "designvalg") {
+              designvalgIndex = 0;
+              loadDesignvalgQuestion();
+            }
+          }
+        });
+      });
+    
+      // Last inn riktig seksjon ved oppstart
+      if (location.hash === "#energibruk") loadEnergibrukQuestion();
+      else if (location.hash === "#effektivitet") loadEffektivitetQuestion();
+      else if (location.hash === "#designvalg") loadDesignvalgQuestion();
+      else loadQuestion();
+    });
+    </script>    
+</body>
+</html>

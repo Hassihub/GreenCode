@@ -1,0 +1,86 @@
+
+
+/* 🔹 Forum container med plass til innleggene */
+.forum-posts-container {
+    margin-top: -40px; /* Tar høyde for fixed header */
+    padding: 20px;
+}
+
+/* 🔹 Forum-post visning */
+.forum-post {
+    border: 1px solid #ccc;
+    background:
+    radial-gradient(circle at 20% 70%, #f4f4f4 0%, transparent 99%),
+    radial-gradient(circle at 99% 10%, #f4f4f4 0%, transparent 99%);
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.forum-post:hover {
+    background-color: #f1f1f1;
+    transform: translateY(-2px);
+    cursor: pointer;
+}
+
+.forum-post h3 {
+    margin-top: 10px;
+    color: #222;
+}
+
+.forum-post p,
+.forum-post small {
+    color: #555;
+    margin: 5px 0;
+}
+
+/* 🔹 Knapp for nytt innlegg */
+.post-button-container {
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+#newPostBtn {
+    padding: 12px 25px;
+    background-color: #28a745;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: background-color 0.3s;
+}
+
+#newPostBtn:hover {
+    background-color: #218838;
+}
+/* 🔹 Knapp for nytt innlegg – flyttet øverst til høyre */
+.post-button-container {
+    text-align: right;
+    margin: 70px 30px 20px 0; /* top margin for header, right spacing */
+}
+.delete-post-btn {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.forum-post {
+    position: relative;
+    background-color: #ffffff;
+    padding: 16px;
+    border-radius: 8px;
+    margin: 12px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+}
+

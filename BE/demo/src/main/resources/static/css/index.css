@@ -1,0 +1,346 @@
+/* 🌿 Grunnstil for index.html */
+#index-main p {
+    padding: 2.5%;
+}
+
+/* 🌄 Bakgrunnsbilde og filter (kun for intro) */
+.index-hero-section {
+    background-image: url('../images/bakgrunn.jpg'); /* <-- Tilpass bildet ditt */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    padding-top: 100px;  /* plass til header */
+    padding-bottom: 120px;
+    height:190px;
+    text-align: center;
+    overflow: hidden;
+    color: white;
+}
+/* 🌫️ Smooth blur/fade nederst på hero-bildet */
+.index-hero-section::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(22, 32, 20, 0.9) 100%);
+    z-index: 1;
+    pointer-events: none;
+  }
+/* 🌿 Tilpass knapper i headeren kun på index.html */
+.index-page #global-header .buttons .nav-btn {
+    background-color: rgba(255, 255, 255, 0.15); /* lett transparent hvit */
+    color: rgb(0, 0, 0);
+    transition: background-color 0.3s ease;
+}
+
+.index-page #global-header .buttons .nav-btn:hover {
+    background-color: rgba(255, 255, 255, 0.9); /* nesten helhvit ved hover */
+    color: #222;
+}
+
+.index-hero-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
+    z-index: 0;
+}
+
+/* 🌿 Intro-tekst oppå bildet */
+.index-intro-container {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.index-title {
+    margin-bottom: 10px;
+    color: white;
+}
+
+.index-intro-text {
+    font-size: 1.1em;
+    color: white;
+}
+
+/* 🌿 Hovedinnhold (etter intro) */
+.meny-wrapper {
+    position: fixed;
+    top: 30%;
+    left: 0;
+    height: auto;
+    z-index: 9999;
+    display: flex;
+    align-items: flex-start;
+}
+
+.meny {
+    scale:80%;
+    background-color: #ffffffee;
+    margin-top:140px;
+    display: flex;
+    flex-direction: column;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    transform: translateX(-90%);
+    transition: transform 0.3s ease;
+    z-index: 1;
+    min-width: 60px;
+    padding-left: 25px;
+}
+.meny :hover {
+    cursor: pointer;
+}
+
+.meny-wrapper:hover .meny {
+    transform: translateX(-20%);
+}
+
+.tekst-og-bilde {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.tekst-og-bilde p {
+    flex: 1;
+    padding: 0; /* fjern padding fra p her, du har det globalt */
+}
+
+.tekst-og-bilde img {
+    max-width: 500px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+.tekst-og-bilde button {
+    position: absolute;
+    height: 50px;
+    width: 100px;
+    margin: 20px;
+    background-color: #4caf50; /* mild grønn */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.bilde-høyre {
+    width: 1230px;
+    margin: 40px;
+    background:
+    radial-gradient(circle at 20% 70%, #f4f4f4 20%, transparent 99%),
+    radial-gradient(circle at 99% 10%, #f4f4f4 20%, transparent 99%);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-left: -5%;
+}
+
+.bilde-høyre p {
+    width: 50%;
+}
+
+.bilde-venstre {
+    width: 1230px;
+    margin: 40px;
+    background:
+    radial-gradient(circle at 20% 70%, #f4f4f4 20%, transparent 99%),
+    radial-gradient(circle at 99% 10%, #f4f4f4 20%, transparent 99%);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-left: -5%;
+}
+
+.bilde-venstre p {
+    width: 50%;
+}
+
+#index-main {
+    padding: 0 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.index-content-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* 🌿 Leaderboard-boks */
+.index-leaderboard {
+    width: 35%;
+    background:
+    radial-gradient(circle at 20% 70%, #f4f4f4 20%, transparent 99%),
+    radial-gradient(circle at 99% 10%, #f4f4f4 20%, transparent 99%);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-left: -5%;
+}
+
+.index-leaderboard h2 {
+    text-align: center;
+}
+
+/* 🌿 Tabell-styling */
+.index-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.index-table th,
+.index-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.index-table th {
+    background: #28a745;
+    color: white;
+}
+/* 🎯 Quiz-reklameboks under leaderboard */
+.quiz-reklame {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #eaf5ec; /* lys grønn bakgrunn */
+    border: 1px solid #c5e6c9;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* 🚀 Knapp inni reklamen */
+.reklame-btn {
+    background-color: #4caf50; /* mild grønn */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.reklame-btn:hover {
+    background-color: #45a045; /* mørkere grønn ved hover */
+}
+
+
+.index-table tr:hover {
+    background: #f1f1f1;
+}
+
+/* 🌿 Informasjonsboks-seksjon */
+.index-info-section {
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.index-post {
+    background:
+    radial-gradient(circle at 20% 70%, #f4f4f4 20%, transparent 99%),
+    radial-gradient(circle at 99% 10%, #f4f4f4 20%, transparent 99%);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.index-post h2 {
+    margin: 0;
+}
+
+/* 🌿 Tilpasning av header på index.html */
+.index-page #global-header {
+    background: transparent;
+    color: white;
+    box-shadow: none;
+}
+
+.index-page #global-header .nav-btn {
+    border-color: white;
+    color: white;
+}
+
+.index-page #global-header .nav-btn:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+    color: #222;
+}
+
+
+/* 🎯 Layout for overskrift og knapper */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #28a745;
+    margin-bottom: 30px; /* ← dette gir luft under linjen */
+
+}
+
+.section-header h2 {
+    flex-grow: 1;
+    margin: 0;
+    padding: 0 0 4px 0;
+}
+
+/* 🎯 Knappegruppe til høyre */
+.section-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+/* ✨ Felles stil for darkmode og lyd-knapper */
+.section-buttons button {
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: inherit;
+    padding: 0;
+    margin: 0;
+    transition: transform 0.2s ease;
+    margin-top: -15px;
+}
+
+.section-buttons button:hover {
+    transform: scale(1.1);
+}
+
+/* 🌙 Darkmode-visning av hele boksen */
+.darkmode-container {
+    background-color: #1e1e1e !important;
+    background-image: none !important;
+    color: #f0f0f0 !important;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+/* 🌙 Tekst og overskrifter i darkmode */
+.darkmode-container h2 {
+    color: #90ee90 !important;
+    border-bottom-color: #90ee90 !important;
+}
+
+.darkmode-container p {
+    color: #ffffff !important;
+}
+
+.darkmode-container img {
+    filter: none !important;
+}

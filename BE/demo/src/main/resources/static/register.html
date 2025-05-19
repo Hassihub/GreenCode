@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrering</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/registrer.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
+    <!-- JS -->
+    <script src="/script/header.js" defer></script>
+    <script src="/script/footer.js" defer></script>
+
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "qzyy0mjou3");
+    </script>  
+    
+</head>
+<body>
+    <div class="a">
+        <h2>Create an Account</h2>
+
+        <form id="registerForm" onsubmit="event.preventDefault(); registerUser();">
+            <input type="text" id="username" placeholder="Username" required autocomplete="username">
+            <input type="password" id="password" placeholder="Password" required autocomplete="new-password">
+            <input type="email" id="email" placeholder="E-mail" required autocomplete="email">
+            <input type="tel" id="phone" placeholder="Mobile" required autocomplete="tel">
+
+            <button type="submit">Create Account</button>
+        </form>
+
+        <p id="message"></p>
+
+        <button onclick="window.location.href='login.html'">Already have an account? Sign in</button>
+    </div>
+
+    <script>
+    async function registerUser() {
+        const userData = {
+            username: document.getElementById("username").value.trim(),
+            password: document.getElementById("password").value.trim(),
+            email: document.getElementById("email").value.trim(),
+            phone: document.getElementById("phone").value.trim()
+        };
+
+        try {
+            const response = await fetch("/api/users/register", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(userData),
+                credentials: "include"
+            });
+
+            const result = await response.json();
+
+            if (response.ok && result.message === "Bruker registrert!") {
+                document.getElementById("message").style.color = "green";
+                document.getElementById("message").innerText = "Bruker registrert. Logger inn ...";
+                await autoLogin(userData.username, userData.password);
+            } else {
+                document.getElementById("message").style.color = "red";
+                document.getElementById("message").innerText = result.error || "Registrering feilet.";
+            }
+        } catch (err) {
+            console.error("❌ Feil ved registrering:", err);
+            document.getElementById("message").style.color = "red";
+            document.getElementById("message").innerText = "Noe gikk galt under registreringen.";
+        }
+    }
+
+    async function autoLogin(username, password) {
+        const loginData = { username, password };
+
+        const response = await fetch("/api/users/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(loginData),
+            credentials: "include"
+        });
+
+        const loginResult = await response.json();
+
+        if (response.ok) {
+            sessionStorage.setItem("userId", loginResult.userId);
+            sessionStorage.setItem("username", loginResult.username);
+            window.location.href = "index.html";
+        } else {
+            document.getElementById("message").innerText = "Bruker registrert, men innlogging feilet.";
+        }
+    }
+    </script>
+</body>
+</html>

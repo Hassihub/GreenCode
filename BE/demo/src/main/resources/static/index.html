@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Code Tutorial</title>
+
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/chatbot.css">
+
+    <script src="/script/header.js" defer></script>
+    <script src="/script/footer.js" defer></script>
+    <script src="/script/chatbot.js" defer></script>
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "qzyy0mjou3");
+    </script>  
+
+<script>
+    (function (m, a, z, e) {
+      var s, t;
+      try {
+        t = m.sessionStorage.getItem('maze-us');
+      } catch (err) {}
+    
+      if (!t) {
+        t = new Date().getTime();
+        try {
+          m.sessionStorage.setItem('maze-us', t);
+        } catch (err) {}
+      }
+    
+      s = a.createElement('script');
+      s.src = z + '?apiKey=' + e;
+      s.async = true;
+      a.getElementsByTagName('head')[0].appendChild(s);
+      m.mazeUniversalSnippetApiKey = e;
+    })(window, document, 'https://snippet.maze.co/maze-universal-loader.js', '38fba7f6-ff32-40c8-93c9-90d2dc176406');
+    </script>
+    
+</head>
+<body class="index-page" data-page="index.html"> <!-- Merk: klasse for spesifikk styling -->
+
+    <!-- Hero-del med bakgrunnsbilde og tekst -->
+    <section class="index-hero-section">
+        <div class="index-intro-container">
+            <h1 class="index-title">Green Coding</h1>
+            <div class="index-intro-text">
+                The GreenCode Initiative works to promote sustainable and energy-efficient development practices within the software industry. Our goal is to raise awareness about green coding and inspire developers to create solutions that reduce environmental impact.
+            </div>
+        </div>
+    </section>
+
+    </div>
+    <div class="meny-wrapper">
+        <div class="tab-handle"></div>
+        <div class="meny">
+            <h1 onclick="scrollToSection('mission')">♻️</h1>
+            <h1 onclick="scrollToSection('importance')">🌍</h1>
+            <h1 onclick="scrollToSection('action')">🧠</h1>
+            <h1 onclick="scrollToSection('about')">🚀</h1>
+            <h1 onclick="scrollToSection('leaderboard')">👑</h1>
+            <h1 onclick="scrollToSection('newsletter')">🗞️</h1>
+        </div>
+    </div>
+
+    <div class="audio">
+        <audio id="minLyd" preload="auto">
+        <source src="indextts.mp3" type="audio/mpeg">
+        Nettleseren din støtter ikke lyd.
+    </audio>
+    <main id="index-main">
+    <section class="index-vision">
+        <div class="bilde-høyre">
+            <div id="mission">
+                <div class="section-header">
+                    <h2 class="gronn-tittel">♻️ Our Mission</h2>
+                    <div class="section-buttons">
+                        <button class="darkmode-btn" onclick="toggleSectionDarkmode('mission', this)">🌙</button>
+                        <button class="audioknapp" onclick="toggleLyd()" title="Read the whole page">🔊</button>
+                    </div>
+                </div>         
+            <div class="tekst-og-bilde">
+            <p>
+                We are committed to promoting sustainable programming practices that help reduce the environmental impact of digital technologies. As technology continues to evolve, so does its energy footprint — and developers have a key role in making the software industry more climate-conscious.
+                <br><br>
+                Every line of code matters. Inefficient systems can waste significant energy over time, while well-structured and optimized solutions lead to better performance and lower emissions. By raising awareness and sharing tools, insights, and real-world examples, we aim to make green coding both accessible and actionable.
+                <br><br>
+                Through collaboration and education, we empower developers and organizations to build cleaner, more efficient software. Greener code means faster apps, lower costs, and a healthier planet — one efficient line at a time.
+            </p>
+            <img src="/images/stock4.jpg">
+            </div>
+        </div>
+        </div>
+        <div class="bilde-venstre">
+            <div id="importance">
+                <div class="section-header">
+                    <h2>🌍 Why It Matters</h2>
+                    <div class="section-buttons">
+                        <button class="darkmode-btn" onclick="toggleSectionDarkmode('importance', this)">🌙</button>
+                        <button class="audioknapp" onclick="toggleLyd()" title="Read the whole page">🔊</button>
+                    </div>
+                </div>   
+            <div class="tekst-og-bilde">
+            <img src="/images/stock5.jpg"style="width: 350px; height: auto;">
+            <p>
+                Software may be virtual, but it depends entirely on physical infrastructure — real machines that consume real energy. Every inefficient loop, redundant task, or unnecessary request increases power usage and contributes to carbon emissions.
+                <br><br>
+                What often feels like a small inefficiency in code can scale massively in production environments. Multiply that across millions of users, and the environmental impact becomes significant. 
+                <br><br>
+                Sustainable programming tackles this hidden cost by improving efficiency, reducing hardware strain, and lowering energy demands. It supports a cleaner, faster, and more responsible future for technology.
+            </p>
+            </div>
+        </div>
+        </div>
+        <div class="bilde-høyre">
+            <div id="action">
+                <div class="section-header">
+                    <h2>🧠 What You Can Do</h2>
+                    <div class="section-buttons">
+                        <button class="darkmode-btn" onclick="toggleSectionDarkmode('action', this)">🌙</button>
+                        <button class="audioknapp" onclick="toggleLyd()" title="Read the whole page">🔊</button>
+                    </div>
+                </div>
+            <div class="tekst-og-bilde">
+            <p>
+                Developers have the power to shape more sustainable digital systems. Writing efficient, well-structured code is a simple but impactful way to cut down on unnecessary energy use.
+                <br><br>
+                Choosing eco-friendly infrastructure and optimizing backend logic — such as minimizing server calls, reducing memory waste, or refining loops — can make a measurable difference in performance and power consumption.
+                <br><br>
+                Embracing green coding isn’t just about helping the planet. It also leads to faster applications, lower operational costs, and codebases that are easier to maintain and scale.
+            </p>
+            <img src="/images/stock6.jpg"style="width: 500px; height: auto;">
+            </div>
+            </div>
+        </div>
+        <div class="bilde-venstre">
+            <div id="about">
+                <div class="section-header">
+                    <h2>🚀 Our Project</h2>
+                    <div class="section-buttons">
+                        <button class="darkmode-btn" onclick="toggleSectionDarkmode('about', this)">🌙</button>
+                        <button class="audioknapp" onclick="toggleLyd()" title="Read the whole page">🔊</button>
+                    </div>
+                </div>
+            <div class="tekst-og-bilde">
+            <img src="/images/stock7.jpg"style="width: 400px; height: auto;">
+            <p>
+                As IT students, we’ve taken on a project dedicated to exploring and promoting green coding practices in the tech industry. Our goal is to raise awareness about how software can be both effective and environmentally responsible.
+                <br><br>
+                We’re building a platform that shares knowledge, practical tools, and case studies focused on sustainable software development. It’s a space for learning, inspiration, and real-world application.
+                <br><br>
+                Through hands-on coding, research, and collaboration, we aim to support a more energy-conscious future in tech — and encourage others to join the movement toward greener code.
+            </p>
+            </div>
+        </div>
+        </div>
+</section>
+    <div class="index-content-wrapper">
+
+        <!-- Leaderboard -->
+        <div class="index-leaderboard">
+            <div id="leaderboard"></div>
+            <h2 style="margin-left:-25px;">👑 Leaderboard</h2>
+            <table class="index-table">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Score</th>
+                    </tr>
+                </thead>
+                <tbody id="index-leaderboard-body">
+                    <!-- Fylles inn dynamisk -->
+                </tbody>
+            </table>
+            <h2>Take the quiz and earn points </h2>
+            <div class="quiz-reklame">
+                <button class="reklame-btn" onclick="window.location.href='quiz.html'">Take the quiz here!</button>
+            </div>
+        </div>
+
+        <!-- Informasjonsposter -->
+        <div class="index-info-section">
+            <div class="index-post">
+                <h2>Efficient Coding</h2>
+                <p>
+                    Write clean, readable, and efficient code to reduce unnecessary resource usage. Simple and well-structured solutions make systems easier to maintain and develop further, while also requiring less processing power.
+                    <br><br>
+                    Optimize loops, avoid redundant operations, and choose algorithms and data structures that fit the task. Smart use of caching and reduced I/O usage can contribute to lower energy consumption and more sustainable software development.                </p>
+            </div>
+            <div class="index-post">
+                <h2>Sustainable Servers</h2>
+                <p>
+                    Choose hosting services and data centers powered by renewable energy sources. Many providers now offer greener alternatives that significantly reduce the carbon footprint.
+                    <br><br>
+                    Services like AWS, Google Cloud, and Azure have their own sustainability initiatives and offer options to select climate-friendly regions. Making conscious infrastructure choices can have a major impact on overall energy consumption.                </p>
+            </div>
+            <div class="index-post">
+                <h2>Energy-Efficient Backend</h2>
+                <p>
+                    Reduce server load by using caching and minimizing unnecessary requests. This leads to faster response times and lower energy consumption.
+                    <br><br>
+                    Optimize your database with indexing and efficient queries, and avoid heavy processing on the server side. Smart choices in backend architecture support both performance and sustainability.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="bilde-høyre">
+        <div id="newsletter">
+        <h2 class="gronn-tittel">🗞️ Newsletter</h2>
+        <div class="tekst-og-bilde">
+        <p>
+            By subscribing to our newsletter, you’ll gain early access to curated articles, practical guides, and insights into how green coding is transforming the tech industry. Whether you’re a developer, designer, or tech enthusiast, our content is crafted to help you stay informed and inspired to build digital solutions that are both efficient and environmentally conscious.
+            <br><br>
+            We highlight innovations, spotlight projects making a real difference, and share tips for reducing digital carbon footprints in your everyday work. From low-energy web design to sustainable backend practices, our goal is to make green tech approachable and actionable—directly to your inbox.
+            <button class="newsletter" onclick="location.href='newsletter.html'">Sign up</button>
+        </p>
+        <img src="/images/stock8.jpg">
+    </div>
+</div>
+
+</main>
+
+<div id="chatbot-placeholder"></div>
+
+</body>
+    <script>
+        async function fetchLeaderboard() {
+            try {
+                const response = await fetch("/api/score/leaderboard");
+                if (!response.ok) throw new Error("Kunne ikke hente leaderboard.");
+                
+                const data = await response.json();
+                const tableBody = document.getElementById("index-leaderboard-body");
+                tableBody.innerHTML = "";
+
+                data.forEach(player => {
+                    const row = document.createElement("tr");
+                    row.innerHTML = `
+                        <td>${player.username}</td>
+                        <td>${player.score}</td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            } catch (error) {
+                console.error("Feil ved henting av leaderboard:", error);
+            }
+        }
+        fetchLeaderboard();
+
+    function scrollToSection(id) {
+        const section = document.getElementById(id);
+        if (section) {
+            // Hvis seksjonen er "leaderboard", juster med ekstra scroll-margin
+            if (id === "leaderboard") {
+                const offset = 100; // justér etter behov
+                const y = section.getBoundingClientRect().top + window.pageYOffset - offset;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+            } else {
+                // Standard scroll
+                section.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+    }
+    function toggleLyd() {
+        const lyd = document.getElementById("minLyd");
+        if (lyd.paused) {
+            lyd.play()
+                .then(() => console.log("Spiller lyd 🎵"))
+                .catch(e => console.error("🚫 Klarte ikke å spille lyd:", e));
+        } else {
+            lyd.pause();
+            console.log("Lyd pauset ⏸️");
+        }
+    }
+    function toggleSectionDarkmode(id, btn) {
+    const section = document.getElementById(id);
+    if (!section) return;
+
+    // Finn containeren (bilde-høyre eller bilde-venstre)
+    const container = section.closest(".bilde-høyre, .bilde-venstre");
+    if (!container) return;
+
+    // Toggle darkmode på containeren
+    container.classList.toggle("darkmode-container");
+
+    // Toggle mørk tekst inni seksjonen (valgfritt hvis du vil ha separat stil)
+    section.classList.toggle("section-darkmode");
+
+    // Oppdater emoji
+    if (container.classList.contains("darkmode-container")) {
+        btn.textContent = "🔆"; // Light mode
+    } else {
+        btn.textContent = "🌙"; // Dark mode
+    }
+}
+
+    </script>
+</html>

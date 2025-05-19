@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opprett foruminnlegg</title>
+    <link rel="stylesheet" href="css/forumPost.css"> 
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">     
+    <link rel="stylesheet" href="css/chatbot.css">
+    <script src="/script/header.js" defer></script>
+    <script src="/script/footer.js" defer></script>
+    <script src="/script/chatbot.js" defer></script>
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "qzyy0mjou3");
+    </script>  
+    
+</head>
+<body>
+    <h2>Opprett nytt foruminnlegg</h2>
+
+    <div class="forum-form-container">
+        <label for="title">Subject:</label>
+        <input type="text" id="title" placeholder="Write your subject here" required>
+
+        <label for="content">Content:</label>
+        <textarea id="content" placeholder="Write your post here..." rows="6" required></textarea>
+
+        <button onclick="publishPost()">Publish</button>
+    </div>
+
+    <script>
+        async function checkLogin() {
+            try {
+                const res = await fetch("/api/users/session", {
+                    credentials: "include"
+                });
+
+                if (!res.ok) {
+                    throw new Error("Ikke logget inn");
+                }
+
+                const user = await res.json();
+                console.log("✅ Innlogget som:", user.username);
+            } catch (err) {
+                alert("Sign in to publish the post.");
+                window.location.href = "login.html";
+            }
+        }
+
+        async function publishPost() {
+            const title = document.getElementById("title").value.trim();
+            const content = document.getElementById("content").value.trim();
+
+            if (!title || !content) {
+                alert("Both title and content must be filled out.");
+                return;
+            }
+
+            const response = await fetch("/api/forum/create", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                credentials: "include", // Viktig for å sende med JSESSIONID
+                body: JSON.stringify({ title, content })
+            });
+
+            if (response.ok) {
+                alert("Post published!");
+                window.location.href = "forum.html";
+            } else {
+                alert("Login required to publish a post.");
+                window.location.href = "login.html";
+            }
+        }
+
+        // Sjekk login status med én gang
+        checkLogin();
+    </script>
+
+    <div id="chatbot-placeholder"></div>
+</body>
+</html>
